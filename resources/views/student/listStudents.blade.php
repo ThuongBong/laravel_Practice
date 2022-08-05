@@ -598,11 +598,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <form method="get" action="{{'/student/list'}}">
+                    <form method="get" action="{{'student/list'}}">
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 550px;">
-                            <select name="classID" class="form-control float-right">
+                        <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" value="{{app("request")->input("search")}}" name="search" class="form-control float-right" placeholder="Search by name">
 
                             <div class="input-group-append">

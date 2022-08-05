@@ -608,64 +608,39 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="{{url("/admin/student-create")}}" enctype="multipart/form-data">
+                <form role="form" method="post" action="{{url("student/create")}}" enctype="multipart/form-data">
                     @csrf
                     @method("post")
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Student ID <span style="color: red">*</span></label>
-                            <input type="text" value="{{old("studentID")}}" name="studentID" class="form-control" placeholder="Input Student ID..." >
-                            @error("studentID")
+                            <label>Name <span style="color: red">*</span></label>
+                            <input type="text" value="{{old("name")}}" name="name" class="form-control" placeholder="Input Student Name..." >
+                            @error("name")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Student Name <span style="color: red">*</span></label>
-                            <input type="text" value="{{old("studentName")}}" name="studentName" class="form-control" placeholder="Input Student Name..." >
-                            @error("studentName")
+                            <label>Age <span style="color: red">*</span></label>
+                            <input type="text" value="{{old("age")}}" name="age" class="form-control" placeholder="Input Student Age..." >
+                            @error("age")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
-                        <!--image-->
                         <div class="form-group">
-                            <label for="exampleInputFile">Image</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="">Upload</span>
-                                </div>
-                            </div>
-                            @error("image")
+                            <label>Address <span style="color: red">*</span></label>
+                            <input type="text" value="{{old("address")}}" name="address" class="form-control" placeholder="Input Student Address..." >
+                            @error("address")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
-                        <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
-                            <label>Birthday</label>
-                            <div class="input-group">
-                                <div style="width: 100%">
-                                    <input name="birthday" value="{{old("birthday")}}" type="date" class="form-control" placeholder="YYYY-MM-DD"
-                                           pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
-                               </div>
-                                <div>
-                                    @error("birthday")
-                                    <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                            </div>
+                            <label>Phone <span style="color: red">*</span></label>
+                            <input type="text" value="{{old("phone")}}" name="phone" class="form-control" placeholder="Input Student Phone..." >
+                            @error("phone")
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
-                        <!-- combobox -->
-                        <div class="form-group">
-                            <label>Class ID <span style="color: red">*</span></label>
-                            <select name="classID" class="custom-select" >
-                                @foreach($classesList as $item)
-                                    <option @if(old("classID")== $item->classID) selected @endif value="{{$item->classID}}">{{$item->className}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
                         <div class="form-group mb-0">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" name="type[]" class="custom-control-input" id="exampleCheck1" >
@@ -677,7 +652,7 @@
 
                     <div class="card-footer col-md-12 ">
                         <button type="submit" class="btn btn-primary float-left">Submit</button>
-                        <a href="/admin/students-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
+                        <a href="/student/list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

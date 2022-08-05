@@ -608,47 +608,29 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="{{url("/admin/student-edit",['student'=>$student->studentID])}}">
+                <form role="form" method="post" action="{{url("student/edit",['student'=>$student->id])}}">
                     @csrf
                     @method("put")
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Student ID <span style="color: red">*</span></label>
-                            <input disabled value="{{$student->studentID}}" type="text" name="studentID" class="form-control" placeholder="Input Student ID..." required>
+                            <label>ID <span style="color: red">*</span></label>
+                            <input disabled value="{{$student->id}}" type="text" name="id" class="form-control" placeholder="Input Student ID..." required>
                         </div>
                         <div class="form-group">
-                            <label>Student Name <span style="color: red">*</span></label>
-                            <input type="text" value="{{$student->studentName}}" name="studentName" class="form-control" placeholder="Input Student Name..." required>
+                            <label>Name <span style="color: red">*</span></label>
+                            <input type="text" value="{{$student->name}}" name="name" class="form-control" placeholder="Input Student Name..." required>
                         </div>
-
-                        <!--uploads file-->
                         <div class="form-group">
-                            <label class="exampleInputFile">File Image</label>
-                            <div>
-                                <input type="file" name="image" accept="image/png, image/gif, image/jpeg">
-                            </div>
-                            <img class="img-thumbnail" src="{{asset($student->image)}}" width="10%" height="10%" style="margin: 10px;">
+                            <label>Age <span style="color: red">*</span></label>
+                            <input type="text" value="{{$student->age}}" name="age" class="form-control" placeholder="Input Student Age..." >
                         </div>
-                        <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
-                            <label>Birthday</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                </div>
-                                <input name="birthday" value="{{$student->birthday}}" type="date" class="form-control" placeholder="YYYY-MM-DD"
-                                       pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
-                            </div>
+                            <label>Address <span style="color: red">*</span></label>
+                            <input type="text" value="{{$student->address}}" name="address" class="form-control" placeholder="Input Student Address..." >
                         </div>
-                        <!-- combobox -->
                         <div class="form-group">
-                            <label>Class ID <span style="color: red">*</span></label>
-                            <select name="classID" class="custom-select" required>
-                                <option value="">choose</option>
-                                @foreach($classesList as $item)
-                                    <option @if($student->classID==$item->classID) selected @endif value="{{$item->classID}}">{{$item->className}}" ></option>
-                                @endforeach
-                            </select>
+                            <label>Phone <span style="color: red">*</span></label>
+                            <input type="text" value="{{$student->phone}}" name="phone" class="form-control" placeholder="Input Student Phone..." >
                         </div>
                         <div class="form-group mb-0">
                             <div class="custom-control custom-checkbox">
@@ -661,7 +643,7 @@
 
                     <div class="card-footer col-md-12 ">
                         <button type="submit" class="btn btn-primary float-left">Submit</button>
-                        <a href="/admin/students-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
+                        <a href="/student/list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

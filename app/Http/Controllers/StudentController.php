@@ -15,4 +15,45 @@ class studentController extends Controller
             "student"=>$student
         ]);
     }
+
+    public function studentForm(){
+        return view("/student.student-create");
+    }
+
+    public function studentCreate(Request $request){
+        Student::create([
+            "name"=>$request->get("name"),
+            "age"=>$request->get("age"),
+            "address"=>$request->get("address"),
+            "phone"=>$request->get("phone")
+        ]);
+        return redirect()->to("student/list")->with("success","Update product successfully");
+    }
+
+    //edit
+    public function studentEdit($id){
+        $student = Student::find($id);
+        return view('student.student-edit',[
+            'student'=>$student
+        ]);
+    }
+
+    public function studentUpdate(Request $request, Student $student){
+        $student->update([
+            "name"=>$request->get("name"),
+            "age"=>$request->get("age"),
+            "address"=>$request->get("address"),
+            "phone"=>$request->get("phone")
+        ]);
+        return redirect()->to("student/list")->with("success","Update product successfully");
+    }
+
+    public function studentDelete(Student $student){
+        try {
+            $student->delete();
+            return redirect()->to("student/list")->with("success", "Delete product successfully");
+        }catch (\Exception $e){
+            return redirect()->to("student/list")->with("error", "Delete Failed");
+        }
+    }
 }
